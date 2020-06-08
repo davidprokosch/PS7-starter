@@ -1,8 +1,21 @@
 ---
 title: "Problem Set 7 - Git Questions"
-author: "Your Name"
-date: "02 June 2020"
+author: "David Prokosch"
+date: "08 June 2020"
 output: pdf_document
 ---
 
-Text answers suffice!
+• Who is responsible for which functions?
+  Julia is responsible for: Summary.pem_cr, print.pem_cr
+  Philipp is responsible for: pem_cr
+
+• Who contributed more to the code? 
+    They both contributed round about the same to code
+
+• Who pushed more often? 
+  Philipp has added more to the code(6 changes)
+  Julia did just one change
+
+• Do the two have a diﬀerent style
+  Philipp changes his code more often
+  Julia did it just one time, but so, that everything     was correct
