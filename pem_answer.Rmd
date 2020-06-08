@@ -21,15 +21,30 @@ of size 0.4. Still, it should be chosen with great care. The data set contains a
 the observed event time (obs_times) and the observed event (status) As usual in survival analysis, the
 status 1 refers to the event while 0 to a censoring. A priori the selected interval cut points defining the
 baseline hazard in each interval are arbitrary.
-```{r echo=TRUE, eval=TRUE}  
+```{r echo=TRUE}  
 library(pammtools)
 library(tidyr)
 library(dplyr)
 data_set <- data.frame(id = 1:3, obs_times = c(1, 0.5, 2), status = c(0, 1, 1))
+ped <- as_ped(data = data_set, Surv(obs_times, status) ~ ., id = "id",cut = seq(0, max(data_set$obs_times), 0.4))
 data_set
-ped <- as_ped(data = data_set, Surv(obs_times, status) ~ ., id = "id",
-              cut = seq(0, max(data_set$obs_times), 0.4))
+```
+```{r echo=FALSE, eval=TRUE, message=FALSE}
+data_set <- data.frame(id = 1:3, obs_times = c(1, 0.5, 2), status = c(0, 1, 1))
+data_set
+```
+```{r echo=TRUE}
 ped
 ```
-The offset reflects information on the observed survival time. Re-arranging the Poisson __likelihood__ of the PEM
+```{r  eval=TRUE, echo=FALSE, message=FALSE}
+library(pammtools)
+ped <- as_ped(data = data_set, Surv(obs_times,status)~ ., id = "id",cut = seq(0, max(data_set$obs_times), 0.4))
+ped
+```
+\pagebreak
+The offset reflects information on the observed survival time. Re-arranging the _Poisson likelihood_ of the PEM
 one can derive the following definition:
+\begin{equation} exp(o_{ij})= t_{ij} \end{equation}
+where o~ij~ reﬂects the oﬀset of individual _i_ at time _j_ and t~ij~ to observed failure time. Eﬀectively, this means that the oﬀset o~ij~ is equal to the natural logarithm of interval length of the observation of interest _i_ if there is an interval cut for each event time.
+\begin{equation} o_{ij} - log(t_{ij}-t_{ij-1}) \end{equation}
+TO BE CONTINIUED (BUT NOT BY YOU)
